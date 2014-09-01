@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="responsive.css" rel="stylesheet">
+  </head>
+  <body ng-controller="MainController">
+
+    <div id="map" go-map></div>
+
+    <div id="map-menu" class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+        <span class="hidden-small">Menu <i class="fa fa-caret-down"></i></span>
+        <span class="visible-small-inline"><i class="fa fa-bars"></i></span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-right">
+        <li class="dropdown-header">layers</li>
+        <li>
+          <div class="btn-toolbar-vertical">
+            <div class="btn-group-vertical">
+              <button ng-click="toggleBaseLayer($event)" type="button" class="btn btn-default" data-toggle="button">Aerial Imagery</button>
+            </div>
+            <div class="btn-group-vertical">
+              <button ng-click="toggleMunicipalities($event)" type="button" class="btn btn-default" data-toggle="button">Municipalities</button>
+            </div>
+          </div>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a tabindex="-1" href="#">Something else here</a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="searchbox">
+      <input id="search" type="text" class="form-control" placeholder="Search">
+    </div>
+
+    <div id="map-tools" class="btn-toolbar-vertical">
+      <div class="btn-group-vertical">
+        <button ng-click="map.view.rotation = 0" ng-hide="map.view.rotation == 0" class="btn btn-default">
+          N
+        </button>
+      </div>
+
+      <div class="btn-group-vertical">
+        <button ng-click="geolocation.tracking = !geolocation.tracking" ng-class="{tracking: geolocation.tracking}" class="btn btn-default">
+          <i class="fa fa-location-arrow"></i>
+        </button>
+      </div>
+      <div class="btn-group-vertical">
+        <button ng-click="map.view.zoom = map.view.zoom + 1" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+        <button ng-click="map.view.zoom = map.view.zoom - 1" class="btn btn-primary"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>
+    <script src="ngeo.js"></script>
+    <script src="//rawgit.com/fredj/ol3-object-properties/master/dist/ol-properties.js"></script>
+    <script src="responsive.js"></script>
+    <script src="search.js"></script>
+  </body>
+</html>
